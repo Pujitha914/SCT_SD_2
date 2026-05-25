@@ -15,9 +15,11 @@ function checkGuess() {
 
     if (guess === randomNumber) {
         message.textContent = "Congratulations! You guessed the correct number!";
-    } else if (guess < randomNumber) {
+    } 
+    else if (guess < randomNumber) {
         message.textContent = "Too low! Try again.";
-    } else {
+    } 
+    else {
         message.textContent = "Too high! Try again.";
     }
 
@@ -29,5 +31,5 @@ function restartGame() {
     attempts = 0;
     document.getElementById("guessInput").value = "";
     document.getElementById("message").textContent = "";
-    document.getElementById("attempts").textContent = "";
+    document.getElementById("attempts").textContent = "Attempts: 0";
 }
