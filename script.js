@@ -1,34 +1,42 @@
-let randomNumber = Math.floor(Math.random() * 100) + 1;
-let attempts = 0;
+let randomNumber;
+let attempts;
+
+startGame();
+
+function startGame() {
+    randomNumber = Math.floor(Math.random() * 100) + 1;
+    attempts = 0;
+
+    document.getElementById("message").textContent = "";
+    document.getElementById("attempts").textContent = "Attempts: 0";
+    document.getElementById("guessInput").value = "";
+}
 
 function checkGuess() {
-    const guess = parseInt(document.getElementById("guessInput").value);
+    const guess = Number(document.getElementById("guessInput").value);
     const message = document.getElementById("message");
-    const attemptsDisplay = document.getElementById("attempts");
 
-    if (isNaN(guess) || guess < 1 || guess > 100) {
-        message.textContent = "Please enter a valid number between 1 and 100.";
+    if (!guess || guess < 1 || guess > 100) {
+        message.textContent = "Please enter a number between 1 and 100.";
         return;
     }
 
     attempts++;
+    document.getElementById("attempts").textContent =
+        "Attempts: " + attempts;
 
     if (guess === randomNumber) {
-        message.textContent = "Congratulations! You guessed the correct number!";
-    } else if (guess < randomNumber) {
-        message.textContent = "Too low! Try again.";
-    } else {
-        message.textContent = "Too high! Try again.";
+        message.textContent =
+            "🎉 Congratulations! You guessed the correct number!";
     }
-
-    attemptsDisplay.textContent = "Attempts: " + attempts;
+    else if (guess < randomNumber) {
+        message.textContent = " Too low! Try again.";
+    }
+    else {
+        message.textContent = " Too high! Try again.";
+    }
 }
 
 function restartGame() {
-    randomNumber = Math.floor(Math.random() * 100) + 1;
-    attempts = 0;
-
-    document.getElementById("guessInput").value = "";
-    document.getElementById("message").textContent = "";
-    document.getElementById("attempts").textContent = "";
+    startGame();
 }
