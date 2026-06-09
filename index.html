@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Number Guessing Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -10,14 +8,15 @@
 
 <div class="container">
     <h1>Number Guessing Game</h1>
+
     <p>Guess a number between 1 and 100</p>
 
-    <input type="number" id="guessInput" min="1" max="100" placeholder="Enter a number">
+    <input type="number" id="guessInput" placeholder="Enter Number">
 
-    <div class="buttons">
-        <button onclick="checkGuess()">Submit Guess</button>
-        <button onclick="restartGame()">Restart Game</button>
-    </div>
+    <br><br>
+
+    <button onclick="checkGuess()">Submit Guess</button>
+    <button onclick="restartGame()">Restart Game</button>
 
     <p id="message"></p>
     <p id="attempts">Attempts: 0</p>
