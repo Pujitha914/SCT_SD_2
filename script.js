@@ -1,42 +1,41 @@
-let randomNumber;
-let attempts;
-
-startGame();
-
-function startGame() {
-    randomNumber = Math.floor(Math.random() * 100) + 1;
-    attempts = 0;
-
-    document.getElementById("message").textContent = "";
-    document.getElementById("attempts").textContent = "Attempts: 0";
-    document.getElementById("guessInput").value = "";
-}
+let randomNumber = Math.floor(Math.random() * 100) + 1;
+let attempts = 0;
 
 function checkGuess() {
-    const guess = Number(document.getElementById("guessInput").value);
-    const message = document.getElementById("message");
 
-    if (!guess || guess < 1 || guess > 100) {
-        message.textContent = "Please enter a number between 1 and 100.";
+    let guess = Number(document.getElementById("guessInput").value);
+
+    if (guess < 1 || guess > 100 || isNaN(guess)) {
+        document.getElementById("message").innerHTML =
+        "Please enter a number between 1 and 100";
         return;
     }
 
     attempts++;
-    document.getElementById("attempts").textContent =
-        "Attempts: " + attempts;
 
     if (guess === randomNumber) {
-        message.textContent =
-            "🎉 Congratulations! You guessed the correct number!";
+        document.getElementById("message").innerHTML =
+        "Congratulations! You guessed the correct number!";
     }
     else if (guess < randomNumber) {
-        message.textContent = " Too low! Try again.";
+        document.getElementById("message").innerHTML =
+        "Too low! Try again.";
     }
     else {
-        message.textContent = " Too high! Try again.";
+        document.getElementById("message").innerHTML =
+        "Too high! Try again.";
     }
+
+    document.getElementById("attempts").innerHTML =
+    "Attempts: " + attempts;
 }
 
 function restartGame() {
-    startGame();
+
+    randomNumber = Math.floor(Math.random() * 100) + 1;
+    attempts = 0;
+
+    document.getElementById("guessInput").value = "";
+    document.getElementById("message").innerHTML = "";
+    document.getElementById("attempts").innerHTML = "Attempts: 0";
 }
